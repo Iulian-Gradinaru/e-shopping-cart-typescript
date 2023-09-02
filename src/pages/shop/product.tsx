@@ -1,22 +1,33 @@
-import React, { useContext } from "react";
-import { ShopContext } from "../../context/shop-context";
+import { useContext } from 'react';
+import { ContextValueInterface, ShopContext } from '../../context/shop-context';
+import { ProductData } from '../../products';
 
-export const Product = (props) => {
-  const { id, productName, price, productImage } = props.data;
-  const { addToCart, cartItems } = useContext(ShopContext);
+export interface ProductProps {
+  product: ProductData;
+}
 
-  const cartItemCount = cartItems[id];
+export const Product: React.FC<ProductProps> = (props) => {
+  const { product } = props;
+
+  const context = useContext<ContextValueInterface | null>(ShopContext);
+
+  if (!context) {
+    return null;
+  }
+  const { addToCart, cartItems } = context;
+
+  const cartItemCount = cartItems[product.id];
 
   return (
     <div className="product">
-      <img src={productImage} />
+      <img src={product.productImage} />
       <div className="description">
         <p>
-          <b>{productName}</b>
+          <b>{product.productName}</b>
         </p>
-        <p> ${price}</p>
+        <p> ${product.price}</p>
       </div>
-      <button className="addToCartBttn" onClick={() => addToCart(id)}>
+      <button className="addToCartBttn" onClick={() => addToCart(product.id)}>
         Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
       </button>
     </div>

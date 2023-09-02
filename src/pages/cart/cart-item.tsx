@@ -1,21 +1,16 @@
 import { useContext } from 'react';
-import { ShopContext, ShopContextInterface } from '../../context/shop-context';
+import { ShopContext, ContextValueInterface } from '../../context/shop-context';
+import { ProductData } from '../../products';
 
 interface CartItemProps {
-  data: {
-    id: string;
-    productName: string;
-    price: number;
-    productImage: string;
-  };
+  product: ProductData;
 }
 
 export const CartItem: React.FC<CartItemProps> = (props) => {
-  const { id, productName, price, productImage } = props.data;
-  const context = useContext<ShopContextInterface | null>(ShopContext);
+  const { product } = props;
+  const context = useContext<ContextValueInterface | null>(ShopContext);
 
   if (!context) {
-    // Poți trata cazul în care contextul este null aici, dacă este necesar
     return null;
   }
 
@@ -23,19 +18,21 @@ export const CartItem: React.FC<CartItemProps> = (props) => {
 
   return (
     <div className="cartItem">
-      <img src={productImage} alt={productName} />
+      <img src={product.productImage} alt={product.productName} />
       <div className="description">
         <p>
-          <b>{productName}</b>
+          <b>{product.productName}</b>
         </p>
-        <p> Price: ${price}</p>
+        <p> Price: ${product.price}</p>
         <div className="countHandler">
-          <button onClick={() => removeFromCart(id)}> - </button>
+          <button onClick={() => removeFromCart(product.id)}> - </button>
           <input
-            value={cartItems[id]}
-            onChange={(e) => updateCartItemCount(Number(e.target.value), id)}
+            value={cartItems[product.id]}
+            onChange={(e) =>
+              updateCartItemCount(Number(e.target.value), product.id)
+            }
           />
-          <button onClick={() => addToCart(id)}> + </button>
+          <button onClick={() => addToCart(product.id)}> + </button>
         </div>
       </div>
     </div>
