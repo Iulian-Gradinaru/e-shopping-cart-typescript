@@ -1,19 +1,64 @@
 import { PRODUCTS } from '../../utils/products';
-import { Product } from '../../components/Item/Item';
-import './shop.css';
+import { Item } from '../../components/Item/Item';
+
+import { ShopContainer, ShopTitle, ProductsGrid } from './Shop.style';
 
 export const Shop = () => {
   return (
-    <div className="shop">
-      <div className="shopTitle">
+    <ShopContainer className="shop">
+      <ShopTitle className="shopTitle">
         <h1>Iulian Shop</h1>
-      </div>
+      </ShopTitle>
 
-      <div className="products">
+      <ProductsGrid className="products">
         {PRODUCTS.map((product) => (
-          <Product product={product} />
+          <Item key={product.id} product={product} />
         ))}
-      </div>
-    </div>
+      </ProductsGrid>
+    </ShopContainer>
   );
 };
+
+// import { PRODUCTS } from '../../utils/products';
+// import { Item } from '../../components/Item/Item';
+// import './shop.css';
+// import { Grid, Box, Typography } from '@mui/material';
+
+// export const Shop = () => {
+//   return (
+//     <Grid
+//       className="shop"
+//       container
+//       direction="row"
+//       alignItems="center"
+//       spacing={3}
+//       item
+//       xs={11}
+//       sm={10}
+//       md={11}
+//       lg={9}
+//       xl={7}
+//     >
+//       <Box className="shopTitle">
+//         <Typography>Iulian Shop</Typography>
+//       </Box>
+
+//       <Grid
+//         className="products"
+//         direction="column"
+//         alignItems="center"
+//         spacing={3}
+//         item
+//         xs={11}
+//         sm={10}
+//         md={11}
+//         lg={9}
+//         xl={7}
+//       >
+//         {PRODUCTS.map((product) => (
+//           <Item product={product} />
+//         ))}
+//       </Grid>
+//     </Grid>
+//   );
+// };

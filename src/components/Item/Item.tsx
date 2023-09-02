@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import { ContextValueInterface, ShopContext } from '../../context/shop-context';
 import { ProductProps } from './Item.types';
+import { Container, Image, Descriptions, AddToCartButton } from './Item.styles';
+// import './Item.css';
 
-export const Product: React.FC<ProductProps> = (props) => {
+export const Item: React.FC<ProductProps> = (props) => {
   const { product } = props;
 
   const context = useContext<ContextValueInterface | null>(ShopContext);
@@ -15,17 +17,20 @@ export const Product: React.FC<ProductProps> = (props) => {
   const cartItemCount = cartItems[product.id];
 
   return (
-    <div className="product">
-      <img src={product.productImage} />
-      <div className="description">
+    <Container className="product">
+      <Image src={product.productImage} />
+      <Descriptions className="description">
         <p>
           <b>{product.productName}</b>
         </p>
         <p> ${product.price}</p>
-      </div>
-      <button className="addToCartBttn" onClick={() => addToCart(product.id)}>
+      </Descriptions>
+      <AddToCartButton
+        className="addToCartBttn"
+        onClick={() => addToCart(product.id)}
+      >
         Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
-      </button>
-    </div>
+      </AddToCartButton>
+    </Container>
   );
 };

@@ -2,17 +2,24 @@ import { useContext } from 'react';
 import { ShopContext, ContextValueInterface } from '../../context/shop-context';
 import { PRODUCTS } from '../../utils/products';
 import { CartItem } from '../../components/CartItem/CartItem';
-import { useNavigate } from 'react-router-dom';
-import './cart.css';
+import { useHistory } from 'react-router-dom';
+
+import {
+  Container,
+  CartContainer,
+  CheckoutButton,
+  CartMessage,
+  ContainerChechout,
+} from './Cart.styles';
 
 export const Cart = () => {
   const context = useContext<ContextValueInterface | null>(ShopContext);
-  const navigate = useNavigate();
+  const history = useHistory();
 
   if (!context) {
     return (
-      <div className="cart">
-        <h1>Your Shopping Cart is Empty</h1>
+      <div className="cart" style={{ textAlign: 'center', padding: '10px' }}>
+        <CartMessage>Your Shopping Cart is Empty</CartMessage>
       </div>
     );
   }
@@ -21,35 +28,39 @@ export const Cart = () => {
   const totalAmount = getTotalCartAmount();
 
   return (
-    <div className="cart">
+    <Container className="cart">
       <div>
         <h1>Your Cart Items</h1>
       </div>
-      <div className="cart">
+      <CartContainer className="cart">
         {PRODUCTS.map((product) => {
           if (cartItems[product.id.toString()] !== 0) {
-            return <CartItem product={product} />;
+            return <CartItem product={product} key={product.id} />;
           }
           return null;
         })}
-      </div>
+      </CartContainer>
 
       {totalAmount > 0 ? (
-        <div className="checkout">
+        <ContainerChechout className="checkout">
           <p> Subtotal: ${totalAmount} </p>
-          <button onClick={() => navigate('/')}> Continue Shopping </button>
-          <button
-            onClick={() => {
-              checkout();
-              navigate('/checkout');
-            }}
-          >
-            Checkout
-          </button>
-        </div>
+          <div className="btn-checkout">
+            <CheckoutButton onClick={() => history.push('/')}>
+              Continue Shopping
+            </CheckoutButton>
+            <CheckoutButton
+              onClick={() => {
+                checkout();
+                history.push('/checkout');
+              }}
+            >
+              Checkout
+            </CheckoutButton>
+          </div>
+        </ContainerChechout>
       ) : (
         <h1> Your Shopping Cart is Empty</h1>
       )}
-    </div>
+    </Container>
   );
 };
