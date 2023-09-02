@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ShopContext, ContextValueInterface } from '../../context/shop-context';
-import { PRODUCTS } from '../../products';
-import { CartItem } from './cart-item';
+import { PRODUCTS } from '../../utils/products';
+import { CartItem } from '../../components/CartItem/CartItem';
 import { useNavigate } from 'react-router-dom';
 import './cart.css';
 

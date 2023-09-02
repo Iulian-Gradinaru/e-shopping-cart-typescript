@@ -1,10 +1,7 @@
 import { useContext } from 'react';
 import { ShopContext, ContextValueInterface } from '../../context/shop-context';
-import { ProductData } from '../../products';
 
-interface CartItemProps {
-  product: ProductData;
-}
+import { CartItemProps } from './CartItem.types';
 
 export const CartItem: React.FC<CartItemProps> = (props) => {
   const { product } = props;

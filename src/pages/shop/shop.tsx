@@ -1,5 +1,5 @@
-import { PRODUCTS } from '../../products';
-import { Product } from './product';
+import { PRODUCTS } from '../../utils/products';
+import { Product } from '../../components/Item/Item';
 import './shop.css';
 
 export const Shop = () => {
