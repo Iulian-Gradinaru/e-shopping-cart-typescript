@@ -2,11 +2,30 @@
   box-sizing: border-box;
 }
 
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  padding-bottom: 60px;
+  position: relative;
+}
+
+/* footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fabe5a;
+  padding: 1rem 0;
+  text-align: center;
+} */
+
 .App {
   width: 100%;
   height: auto;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f2f7;
 }
 
 body {

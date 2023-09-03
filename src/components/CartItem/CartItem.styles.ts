@@ -1,16 +1,5 @@
 import { styled } from '@mui/system';
 
-// export const CartItemContainer = styled('div')({
-//   width: '600px',
-//   height: '100%',
-//   display: 'flex',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
-//   borderRadius: '25px',
-//   margin: '30px',
-// });
-
 export const CartItemContainer = styled('div')(({ theme }) => {
   return {
     width: '600px',
@@ -42,16 +31,6 @@ export const Image = styled('img')({
     cursor: 'pointer',
   },
 });
-
-// export const Description = styled('div')({
-//   width: '100%',
-//   fontSize: '30px',
-//   display: 'flex',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   flexDirection: 'column',
-//   marginBottom: '10px',
-// });
 
 export const Description = styled('div')(({ theme }) => {
   return {

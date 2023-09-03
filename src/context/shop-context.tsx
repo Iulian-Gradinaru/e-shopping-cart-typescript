@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useState } from 'react';
 import { PRODUCTS, ProductData } from '../utils/products';
+import useLocalStorage from 'use-local-storage';
 
 export const ShopContext = createContext<ContextValueInterface | null>(null);
 
@@ -31,7 +32,10 @@ const getDefaultCart = () => {
 export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
   const { children } = props;
 
-  const [cartItems, setCartItems] = useState<CartItemProps>(getDefaultCart());
+  const [cartItems, setCartItems] = useLocalStorage<CartItemProps>(
+    'cartItems',
+    getDefaultCart()
+  );
 
   const getTotalCartAmount = (): number => {
     let totalAmount = 0;
@@ -46,11 +50,21 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
     return totalAmount;
   };
   const addToCart = (itemId: number): void => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    setCartItems((prev) => {
+      if (prev) {
+        return { ...prev, [itemId]: prev[itemId] + 1 };
+      }
+      return {}; // Returnați o valoare implicită în cazul în care prev este undefined
+    });
   };
 
   const removeFromCart = (itemId: number): void => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+    setCartItems((prev) => {
+      if (prev) {
+        return { ...prev, [itemId]: prev[itemId] - 1 };
+      }
+      return {}; // Returnați o valoare implicită în cazul în care prev este undefined
+    });
   };
 
   const updateCartItemCount = (newAmount: number, itemId: number): void => {
