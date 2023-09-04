@@ -8,6 +8,8 @@ import { ContextValueInterface, ShopContext } from '../../context/shop-context';
 {
 }
 import { InputHandler } from './ProductDesriptions.styles';
+import { Description } from '../CartItem/CartItem.styles';
+import { Link } from 'react-router-dom';
 
 export const ProductDescriptions: React.FC = () => {
   const context = useContext<ContextValueInterface | null>(ShopContext);
@@ -30,16 +32,37 @@ export const ProductDescriptions: React.FC = () => {
       <img src={product.productImage} />
       <h2>{product.productName}</h2>
       <p>{product.descriptions}</p>
-      <div className="countHandler">
-        <button onClick={() => removeFromCart(product.id)}> - </button>
-        <InputHandler
-          value={cartItems[product.id]}
-          onChange={(e) =>
-            updateCartItemCount(Number(e.target.value), product.id)
-          }
-        />
-        <button onClick={() => addToCart(product.id)}> + </button>
-      </div>
+
+      <Description className="description">
+        <p>
+          <b>{product.productName}</b>
+        </p>
+        <p> Price: ${product.price}</p>
+        <div className="countHandler">
+          <p>Add To Cart</p>
+          <button
+            disabled={cartItems[product.id] <= 0}
+            onClick={() => removeFromCart(product.id)}
+          >
+            -
+          </button>
+
+          <InputHandler
+            value={cartItems[product.id]}
+            onChange={(e) =>
+              updateCartItemCount(Number(e.target.value), product.id)
+            }
+          />
+
+          <button onClick={() => addToCart(product.id)}> + </button>
+        </div>
+      </Description>
+      <Link to={'/'}>
+        <button>Back to Shop</button>
+      </Link>
+      <Link to={'/cart'}>
+        <button>Back to Cart</button>
+      </Link>
     </div>
   );
 };
