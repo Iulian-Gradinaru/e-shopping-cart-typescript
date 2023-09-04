@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { ContextValueInterface, ShopContext } from '../../context/shop-context';
 import { ProductProps } from './Item.types';
 import { Container, Image, Descriptions, AddToCartButton } from './Item.styles';
+import { Link } from 'react-router-dom';
 
 export const Item: React.FC<ProductProps> = (props) => {
   const { product } = props;
@@ -17,7 +18,9 @@ export const Item: React.FC<ProductProps> = (props) => {
 
   return (
     <Container className="product">
-      <Image src={product.productImage} />
+      <Link to={`/product/${product.id}`} key={product.id}>
+        <Image src={product.productImage} />
+      </Link>
       <Descriptions className="description">
         <p>
           <b>{product.productName}</b>

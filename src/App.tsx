@@ -8,6 +8,7 @@ import { Cart } from './pages/Cart';
 import { ShopContextProvider } from './context/shop-context';
 import { Footer2 } from './components/Footer2';
 import { Checkout } from './components/Checkout';
+import { ProductDescriptions } from './components/ProductDesriptions';
 
 export const App = () => {
   return (
@@ -21,6 +22,10 @@ export const App = () => {
               <Route path="/contact" exact component={Contact} />
               <Route path="/cart" exact component={Cart} />
               <Route path="/checkout" exact component={Checkout} />
+              <Route
+                path="/product/:productId"
+                component={ProductDescriptions}
+              />
             </Switch>
           </div>
         </Router>
