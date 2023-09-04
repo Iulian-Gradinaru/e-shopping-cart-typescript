@@ -83,10 +83,7 @@ export const NavBar: React.FC = () => {
     <Container>
       <ContainerWrapper>
         <ContainerParagraph>
-          <Paragraph>
-            Iulian Gradinaru <br />
-            Front End Developer
-          </Paragraph>
+          <Paragraph>Iulian Shop</Paragraph>
         </ContainerParagraph>
         {!isMobileView && navbarContent}
       </ContainerWrapper>

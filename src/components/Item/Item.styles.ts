@@ -3,55 +3,18 @@
 //  */
 import { styled } from '@mui/system';
 
-// export const Container = styled('div')({
-//   borderRadius: '15px',
-//   width: '30%',
-//   margin: '15px',
-//   display: 'flex',
-//   flexDirection: 'column',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   '&:hover': {
-//     transition: '0.3s ease-in',
-//     transform: 'scale(1.1)', // Scalează imaginea la 110% când se face hover.
-//     cursor: 'pointer',
-//   },
-// });
-
-// export const Container = styled('div')(({ theme }) => {
-//   return {
-//     borderRadius: '15px',
-//     width: '30%',
-//     margin: '15px',
-//     display: 'flex',
-//     flexDirection: 'column',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     '&:hover': {
-//       transition: '0.3s ease-in',
-//       transform: 'scale(1.1)', // Scalează imaginea la 110% când se face hover.
-//       cursor: 'pointer',
-//     },
-//     [theme.breakpoints.down('sm')]: {
-//       boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
-//       borderRadius: '25px',
-//       marginLeft: 35,
-//       marginBottom: 5,
-//       width: '100%',
-//     },
-//     [theme.breakpoints.down('md')]: {},
-//   };
-// });
-
 export const Container = styled('div')(({ theme }) => {
   return {
     borderRadius: '15px',
-    width: '30%',
-    margin: '15px',
+    width: '90%',
+    height: '100%',
+    // margin: '15px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
+    marginBottom: 50,
     '&:hover': {
       cursor: 'pointer',
     },
@@ -66,13 +29,26 @@ export const Container = styled('div')(({ theme }) => {
   };
 });
 
-// export const Image = styled('img')({
-//   width: 200,
-//   transition: 'transform 0.3s ease-in',
-//   '&:hover': {
-//     transform: 'scale(1.1)',
-//     cursor: 'pointer',
-//   },
+// export const Container = styled('div')(({ theme }) => {
+//   return {
+//     width: '30%',
+//     height: '100%',
+//     display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
+//     borderRadius: '25px',
+//     margin: '15px',
+//     [theme.breakpoints.down('sm')]: {
+//       width: '85%',
+//       margin: 10,
+//       display: 'flex',
+//       justifyContent: 'center',
+//       aligntems: 'center',
+//       flexDirection: 'column',
+//     },
+//     [theme.breakpoints.down('md')]: {},
+//   };
 // });
 
 export const Image = styled('img')(({ theme }) => {
@@ -91,6 +67,7 @@ export const Image = styled('img')(({ theme }) => {
 });
 
 export const Descriptions = styled('div')({
+  marginTop: 20,
   textAlign: 'center',
 });
 

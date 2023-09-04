@@ -10,6 +10,7 @@ export const CartItemContainer = styled('div')(({ theme }) => {
     boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
     borderRadius: '25px',
     margin: '30px',
+    // marginBottom: 20,
     [theme.breakpoints.down('sm')]: {
       width: '85%',
       margin: 10,
@@ -23,7 +24,7 @@ export const CartItemContainer = styled('div')(({ theme }) => {
 });
 
 export const Image = styled('img')({
-  width: '200px',
+  width: '150px',
   padding: '10px',
   transition: 'transform 0.3s ease-in',
   '&:hover': {

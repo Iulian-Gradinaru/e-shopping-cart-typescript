@@ -1,7 +1,6 @@
-import lights_img from '../assets/products/hero_desktop.jpg';
-import hangman_img from '../assets/products/Hero-Desk_28.08.2023 (1).gif';
-import smartbrain_img from '../assets/products/hero_desktop (1).jpg';
-// import pokedex_img from '../assets/products/hero_desktop.jpg"""
+import lights_img from '../assets/products/wallpaperflare.com_wallpaper.jpg';
+import hangman_img from '../assets/products/wallpaperflare.com_wallpaper (1).jpg';
+import smartbrain_img from '../assets/products/wallpaperflare.com_wallpaper (2).jpg';
 
 export const data = [
   {

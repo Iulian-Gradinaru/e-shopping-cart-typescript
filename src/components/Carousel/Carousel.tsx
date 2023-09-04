@@ -4,6 +4,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Carousel.css';
 import { data } from '../../utils/data';
 
+const CustomPrevArrow = () => <div></div>;
+const CustomNextArrow = () => <div></div>;
+
 export const Carousel: React.FC = () => {
   const settings = {
     className: 'center',
@@ -15,8 +18,10 @@ export const Carousel: React.FC = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: 0,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2000,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
     responsive: [
       {
         breakpoint: 768,
@@ -29,10 +34,6 @@ export const Carousel: React.FC = () => {
 
   return (
     <div className="carousel">
-      <div className="carousel-buttons">
-        <button className="slick-prev">Prev</button>
-        <button className="slick-next">Next</button>
-      </div>
       <Slider {...settings}>
         {data.map((item) => (
           <div className="box" key={item.id}>

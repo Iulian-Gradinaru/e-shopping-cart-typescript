@@ -21,7 +21,11 @@ export const CartItem: React.FC<CartItemProps> = (props) => {
 
   return (
     <CartItemContainer className="cartItem">
-      <Image src={product.productImage} alt={product.productName} />
+      <Image
+        className="Iulian"
+        src={product.productImage}
+        alt={product.productName}
+      />
       <Description className="description">
         <p>
           <b>{product.productName}</b>
