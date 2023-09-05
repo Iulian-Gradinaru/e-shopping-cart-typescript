@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext } from 'react';
 import { PRODUCTS, ProductData } from '../utils/products';
 import useLocalStorage from 'use-local-storage';
 
@@ -8,17 +8,23 @@ interface CartItemProps {
   [productId: string]: number;
 }
 
+interface WishlistItemProps {
+  [productId: string]: boolean;
+}
+
 export interface ShopContextProps {
   children: ReactNode;
 }
 
 export interface ContextValueInterface {
+  wishlist: WishlistItemProps; // Adaugăm wishlist în interfața ContextValueInterface
   cartItems: CartItemProps;
   addToCart: (itemId: number) => void;
   updateCartItemCount: (newAmount: number, itemId: number) => void;
   removeFromCart: (itemId: number) => void;
   getTotalCartAmount: () => number;
   checkout: () => void;
+  addToWishlist: (itemId: number) => void; // Adaugăm metoda addToWishlist
 }
 
 const getDefaultCart = () => {
@@ -35,6 +41,11 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
   const [cartItems, setCartItems] = useLocalStorage<CartItemProps>(
     'cartItems',
     getDefaultCart()
+  );
+
+  const [wishlist, setWishlist] = useLocalStorage<WishlistItemProps>(
+    'wishlist',
+    {} // Inițial, wishlist este un obiect gol
   );
 
   const getTotalCartAmount = (): number => {
@@ -71,17 +82,30 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 
+  // Adaugă o nouă metodă pentru adăugarea în lista de dorințe
+  const addToWishlist = (itemId: number): void => {
+    setWishlist((prev) => {
+      if (prev) {
+        return { ...prev, [itemId]: true };
+      }
+      return {};
+    });
+  };
+
   const checkout = (): void => {
     setCartItems(getDefaultCart());
   };
 
   const contextValue: ContextValueInterface = {
+    wishlist, // Adăugăm wishlist în context
     cartItems,
     addToCart,
     updateCartItemCount,
     removeFromCart,
     getTotalCartAmount,
     checkout,
+
+    addToWishlist, // Adăugăm metoda addToWishlist în context
   };
 
   return (

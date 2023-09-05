@@ -1,0 +1,69 @@
+.message-container {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-content {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.message-content h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.message-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.message-content p {
+  font-size: 18px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.social-link img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.social-link p {
+  font-size: 16px;
+  color: #555;
+}
+
+.message-content a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.message-content a:hover {
+  text-decoration: underline;
+}

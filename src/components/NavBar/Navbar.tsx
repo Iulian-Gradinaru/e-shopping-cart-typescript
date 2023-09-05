@@ -51,8 +51,8 @@ export const NavBar: React.FC = () => {
         <CustomNavLink exact={true} to="/" activeStyle={{ color: '#ffff' }}>
           Shop
         </CustomNavLink>
-        <CustomNavLink exact to="/contact" activeStyle={{ color: '#ffff' }}>
-          Contact
+        <CustomNavLink exact to="/wishlist" activeStyle={{ color: '#ffff' }}>
+          WishList
         </CustomNavLink>
         <CustomNavLink exact to="/cart" activeStyle={{ color: '#ffff' }}>
           <ShoppingCart size={32} />

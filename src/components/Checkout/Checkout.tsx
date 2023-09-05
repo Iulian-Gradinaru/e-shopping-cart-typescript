@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Checkout.css'; // Stilizarea CSS pentru formular
+import { useHistory } from 'react-router-dom'; // Importă useHistory pentru redirecționare
 
 interface FormData {
   cardNumber: string;
@@ -16,6 +17,8 @@ export const Checkout: React.FC = () => {
     cvv: '',
   });
 
+  const history = useHistory(); // Inițializează history pentru redirecționare
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData({
@@ -26,7 +29,8 @@ export const Checkout: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    console.log('Form Data:', formData);
+
+    history.push('/message');
   };
 
   return (

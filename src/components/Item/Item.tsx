@@ -12,7 +12,7 @@ export const Item: React.FC<ProductProps> = (props) => {
   if (!context) {
     return null;
   }
-  const { addToCart, cartItems } = context;
+  const { addToCart, cartItems, addToWishlist } = context;
 
   const cartItemCount = cartItems[product.id];
 
@@ -33,6 +33,7 @@ export const Item: React.FC<ProductProps> = (props) => {
       >
         Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
       </AddToCartButton>
+      <button onClick={() => addToWishlist(product.id)}>Add to Wishlist</button>
     </Container>
   );
 };
