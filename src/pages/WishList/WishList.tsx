@@ -3,7 +3,10 @@ import { ContextValueInterface, ShopContext } from '../../context/shop-context';
 import { PRODUCTS } from '../../utils/products';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { AddToCartButton } from '../../components/Item/Item.styles';
+import {
+  Description,
+  InputHandler,
+} from '../../components/CartItem/CartItem.styles';
 
 export const WishList: React.FC = () => {
   const context = useContext<ContextValueInterface | null>(ShopContext);
@@ -12,7 +15,14 @@ export const WishList: React.FC = () => {
     return null;
   }
 
-  const { wishlist, removeFromWishlist, addToCart } = context;
+  const {
+    wishlist,
+    removeFromWishlist,
+    addToCart,
+    cartItems,
+    removeFromCart,
+    updateCartItemCount,
+  } = context;
 
   // Afiseaza produsele din lista de dorinte
   const wishlistItems = Object.keys(wishlist).map((itemId) => {
@@ -48,19 +58,52 @@ export const WishList: React.FC = () => {
             style={{ color: '#ff0000' }}
           />
         </button>
-        <button
-          style={{
-            background: '#007bff', // Stilizare pentru butonul "Add to Cart"
-            color: '#fff',
-            border: 'none',
-            padding: '4px 8px',
-            cursor: 'pointer',
-            marginLeft: '8px',
-          }}
-          onClick={() => addToCart(product.id)} // Adăugare în coș la apăsarea butonului
-        >
-          Add to Cart
-        </button>
+
+        <Description className="description">
+          <p>
+            <b>{product.productName}</b>
+          </p>
+          <p> Price: ${product.price}</p>
+          <div className="countHandler">
+            <p>Add To Cart</p>
+            <button
+              disabled={cartItems[product.id] <= 0}
+              onClick={() => removeFromCart(product.id)}
+              style={{
+                background: '#007bff', // Stilizare pentru butonul "Add to Cart"
+                color: '#fff',
+                border: 'none',
+                padding: '4px 8px',
+                cursor: 'pointer',
+                marginLeft: '8px',
+              }}
+            >
+              -
+            </button>
+
+            <InputHandler
+              value={cartItems[product.id]}
+              onChange={(e) =>
+                updateCartItemCount(Number(e.target.value), product.id)
+              }
+            />
+
+            <button
+              onClick={() => addToCart(product.id)}
+              style={{
+                background: '#007bff', // Stilizare pentru butonul "Add to Cart"
+                color: '#fff',
+                border: 'none',
+                padding: '4px 8px',
+                cursor: 'pointer',
+                marginLeft: '8px',
+              }}
+            >
+              {' '}
+              +{' '}
+            </button>
+          </div>
+        </Description>
       </div>
     );
   });

@@ -58,11 +58,13 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
         let itemInfo = PRODUCTS.find(
           (product) => product.id === Number(item)
         ) as ProductData;
-        totalAmount += cartItems[item] * itemInfo.price; // Adăugare virgulă aici
+        totalAmount += cartItems[item] * itemInfo.price;
       }
     }
-    return totalAmount;
+    // Formatează totalAmount ca un număr cu două zecimale
+    return parseFloat(totalAmount.toFixed(2));
   };
+
   const addToCart = (itemId: number): void => {
     setCartItems((prev) => {
       if (prev) {

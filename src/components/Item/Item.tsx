@@ -44,6 +44,7 @@ export const Item: React.FC<ProductProps> = (props) => {
         <p>
           <b>{product.productName}</b>
         </p>
+        <p style={{ textDecoration: 'line-through' }}>${product.discount}</p>
         <p> ${product.price}</p>
       </Descriptions>
       <div style={{ display: 'flex', alignItems: 'center', gap: '160px' }}>

@@ -23,6 +23,7 @@ export const ProductDescriptions: React.FC = () => {
   const { productId } = useParams<{ productId: string }>(); // Preia id-ul produsului din URL
   const product = PRODUCTS.find((p) => p.id === parseInt(productId, 10));
 
+  // Verifică dacă produsul există în lista de produse
   if (!product) {
     return <div>Produsul nu a fost găsit.</div>;
   }

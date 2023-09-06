@@ -23,9 +23,7 @@ import {
   MobileNavLink,
   ContainerWrapper,
 } from './NavBar.styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 /**
