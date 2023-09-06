@@ -1,99 +1,143 @@
 import React, { useState } from 'react';
-import './Checkout.css'; // Stilizarea CSS pentru formular
-import { useHistory } from 'react-router-dom'; // Importă useHistory pentru redirecționare
+import { styled } from '@mui/system';
+import { useHistory } from 'react-router-dom';
+import {
+  Typography,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  TextareaAutosize,
+  Button,
+  SelectChangeEvent,
+} from '@mui/material';
+import { CreditCardForm } from '../CreditCardForm';
 
-interface FormData {
-  cardNumber: string;
-  cardHolder: string;
-  expirationDate: string;
-  cvv: string;
-}
+const Container = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  maxWidth: '400px',
+  margin: '0 auto',
+  padding: '20px',
+});
 
-export const Checkout: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    cardNumber: '',
-    cardHolder: '',
-    expirationDate: '',
-    cvv: '',
-  });
+const FormTitle = styled(Typography)({
+  fontSize: '24px',
+  fontWeight: 'bold',
+  marginBottom: '16px',
+});
 
-  const history = useHistory(); // Inițializează history pentru redirecționare
+const FormSection = styled('div')({
+  marginBottom: '16px',
+});
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+const SubmitButton = styled(Button)({
+  backgroundColor: '#007bff',
+  color: '#fff',
+  marginTop: '16px',
+});
+
+export const Checkout = () => {
+  const [paymentMethod, setPaymentMethod] = useState('cash');
+
+  const history = useHistory();
+
+  const handlePaymentMethodChange = (e: SelectChangeEvent<string>) => {
+    setPaymentMethod(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
+    // Redirect către ruta "message"
     history.push('/message');
   };
 
   return (
-    <div className="credit-card">
-      <div className="credit-cardchip"></div>
+    <Container>
+      {/* Folosim un formular pentru a gestiona trimiterea */}
       <form onSubmit={handleSubmit}>
-        <div className="credit-cardnumber">
-          <label htmlFor="cardNumber">Card Number</label>
-          <input
-            type="text"
-            id="cardNumber"
-            name="cardNumber"
-            value={formData.cardNumber}
-            onChange={handleInputChange}
-            maxLength={19}
-            placeholder="   "
+        <FormTitle variant="h1">Payments</FormTitle>
+
+        <FormSection>
+          <Typography variant="h5">Shipping Address</Typography>
+          <TextField
+            label="Address"
+            variant="outlined"
+            fullWidth
+            margin="normal"
             required
           />
-        </div>
-        <div className="credit-cardinfo">
-          <div className="credit-cardinfo-item">
-            <label htmlFor="cardHolder">Card Holder</label>
-            <input
-              type="text"
-              id="cardHolder"
-              name="cardHolder"
-              value={formData.cardHolder}
-              onChange={handleInputChange}
-              placeholder="Full Name"
+          <TextField
+            label="City"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Postal Code"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
+          />
+        </FormSection>
+
+        <FormSection>
+          <Typography variant="h5">Billing Address</Typography>
+          <TextField
+            label="Address"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
+          />
+          <TextField
+            label="City"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Postal Code"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            required
+          />
+        </FormSection>
+
+        <FormSection>
+          <FormControl fullWidth variant="outlined">
+            <InputLabel>Payment Method</InputLabel>
+            <Select
+              label="Payment Method"
+              value={paymentMethod}
+              onChange={handlePaymentMethodChange}
               required
-            />
-          </div>
-          <div className="credit-cardinfo-item">
-            <label htmlFor="expirationDate">Expiration Date</label>
-            <input
-              type="text"
-              id="expirationDate"
-              name="expirationDate"
-              value={formData.expirationDate}
-              onChange={handleInputChange}
-              maxLength={5}
-              placeholder="MM/YY"
-              required
-            />
-          </div>
-          <div className="credit-cardinfo-item">
-            <label htmlFor="cvv">CVV</label>
-            <input
-              type="text"
-              id="cvv"
-              name="cvv"
-              value={formData.cvv}
-              onChange={handleInputChange}
-              maxLength={3}
-              placeholder="123"
-              required
-            />
-          </div>
-        </div>
-        <button type="submit" className="credit-card__submit">
-          Submit
-        </button>
+            >
+              <MenuItem value="cash">Cash on Delivery</MenuItem>
+              <MenuItem value="card">Credit Card</MenuItem>
+            </Select>
+          </FormControl>
+        </FormSection>
+
+        {paymentMethod === 'card' && <CreditCardForm />}
+
+        <FormSection>
+          <Typography variant="h5">Additional Comments</Typography>
+          <TextareaAutosize
+            minRows={4}
+            placeholder="Add your comments here..."
+            style={{ width: '100%' }}
+          />
+        </FormSection>
+        {/* Butonul de submit trebuie să fie de tip "submit" pentru a declanșa trimiterea */}
+        <SubmitButton type="submit" variant="contained">
+          Submit Order
+        </SubmitButton>
       </form>
-    </div>
+    </Container>
   );
 };

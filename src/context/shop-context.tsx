@@ -25,6 +25,9 @@ export interface ContextValueInterface {
   getTotalCartAmount: () => number;
   checkout: () => void;
   addToWishlist: (itemId: number) => void; // Adaugăm metoda addToWishlist
+  removeFromWishlist: (itemId: number) => void;
+  getWishlistItemCount: () => number;
+  getCartItemCount: () => number;
 }
 
 const getDefaultCart = () => {
@@ -92,6 +95,39 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
     });
   };
 
+  const removeFromWishlist = (itemId: number): void => {
+    setWishlist((prev) => {
+      if (prev) {
+        const updatedWishlist = { ...prev };
+        delete updatedWishlist[itemId];
+        return updatedWishlist;
+      }
+      return {};
+    });
+  };
+
+  // Funcție pentru a număra produsele selectate în Wishlist
+  const getWishlistItemCount = (): number => {
+    let count = 0;
+    for (const itemId in wishlist) {
+      if (wishlist[itemId]) {
+        count++;
+      }
+    }
+    return count;
+  };
+
+  // Funcție pentru a număra produsele selectate în cart
+  const getCartItemCount = (): number => {
+    let count = 0;
+    for (const itemId in cartItems) {
+      if (cartItems[itemId]) {
+        count++;
+      }
+    }
+    return count;
+  };
+
   const checkout = (): void => {
     setCartItems(getDefaultCart());
   };
@@ -104,8 +140,10 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
     removeFromCart,
     getTotalCartAmount,
     checkout,
-
+    removeFromWishlist,
     addToWishlist, // Adăugăm metoda addToWishlist în context
+    getWishlistItemCount,
+    getCartItemCount,
   };
 
   return (

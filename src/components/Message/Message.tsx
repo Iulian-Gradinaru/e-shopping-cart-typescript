@@ -1,4 +1,5 @@
 import './Message.css';
+import { Link } from 'react-router-dom';
 
 export const Message = () => {
   return (
@@ -32,6 +33,9 @@ export const Message = () => {
           </a>
         </p>
       </div>
+      <Link to={'/'}>
+        <button>Go to Shop</button>
+      </Link>
     </div>
   );
 };

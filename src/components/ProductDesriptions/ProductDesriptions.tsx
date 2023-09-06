@@ -58,10 +58,10 @@ export const ProductDescriptions: React.FC = () => {
         </div>
       </Description>
       <Link to={'/'}>
-        <button>Back to Shop</button>
+        <button>Go to Shop</button>
       </Link>
       <Link to={'/cart'}>
-        <button>Back to Cart</button>
+        <button>Go to Cart</button>
       </Link>
     </div>
   );
