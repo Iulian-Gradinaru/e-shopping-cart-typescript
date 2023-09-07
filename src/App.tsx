@@ -6,9 +6,9 @@ import { Shop } from './pages/Shop';
 import { WishList } from './pages/WishList';
 import { Cart } from './pages/Cart';
 import { ShopContextProvider } from './context/shop-context';
-import { Footer2 } from './components/Footer2';
+import { Footer } from './components/Footer';
 import { Checkout } from './components/Checkout';
-import { ProductDescriptions } from './components/ProductDesriptions';
+import { ProductDescriptions } from './components/ProductDescriptions';
 import { Message } from './components/Message/Message';
 import { ScrollToTop } from './components/ScrollToTop';
 
@@ -35,7 +35,7 @@ export const App = () => {
           </ScrollToTop>
         </Router>
       </ShopContextProvider>
-      <Footer2 />
+      <Footer />
     </div>
   );
 };

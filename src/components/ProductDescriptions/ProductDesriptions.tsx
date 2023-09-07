@@ -46,7 +46,11 @@ export const ProductDescriptions: React.FC = () => {
       <Description className="description">
         <div>
           <CustomImage src={product.productImage} />
+          <Price style={{ textDecoration: 'line-through' }}>
+            Price: ${product.discount}
+          </Price>
           <Price> Price: ${product.price}</Price>
+
           <CountHandler className="countHandler">
             <StylesParagraph>Add To Cart</StylesParagraph>
             <StylesButton

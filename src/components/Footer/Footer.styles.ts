@@ -1,69 +1,182 @@
 /**
- * Imports styled
+ * Import styled
  */
 import { styled } from '@mui/system';
 
 /**
- * Imports Material UI components
+ * Stiled the FooterContainer
  */
-import { Box, Typography } from '@mui/material';
-
-/**
- * Styles the Container
- */
-export const Container = styled('div')(() => {
+export const FooterContainer = styled('footer')(() => {
   return {
-    backgroundColor: '#fabe5a',
-    padding: '3rem 1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
     textAlign: 'center',
-    margin: '-8px',
-    '& svg': {
-      color: '#fff',
-      marginLeft: '1rem',
+    // position: 'fixed',
+    // left: 0,
+    // bottom: 0,
+    width: '100%',
+  };
+});
+
+/**
+ * Stiled the SocialWrapper
+ */
+export const SocialWrapper = styled('div')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#161c27',
+    color: 'white',
+    padding: 7,
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+  };
+});
+
+export const ContainerParagraph = styled('div')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
     },
   };
 });
 
 /**
- * Styles the Styles Box
+ * Stiled the SocialParagraph
  */
-export const StylesBox = styled(Box)(() => {
+export const SocialParagraph = styled('p')(() => {
   return {
-    display: 'flex',
-    paddingBottom: '1rem',
-    justifyContent: 'center',
-    alignItems: 'center',
+    textAlign: 'left',
+    marginRight: 'auto',
+    marginLeft: 20,
   };
 });
 
 /**
- * Styles the Styles Typography
+ * Stiled the IconLink
  */
-export const StylesTypography = styled(Typography)(() => {
+export const IconLink = styled('a')(() => {
+  return {
+    marginLeft: 20,
+    marginRight: 20,
+    color: 'white',
+  };
+});
+
+/**
+ * Stiled the RowWrapper
+ */
+export const RowWrapper = styled('div')(() => {
   return {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    gap: 3,
-    color: '#000000',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    backgroundColor: 'hsl(220deg 27.27% 15.1%)',
+    color: 'white',
+  };
+});
 
-    '&: hover': {
-      textDecoration: 'underline',
-      color: '#606C5D',
+/**
+ * Stiled the ColumnWrapper
+ */
+export const ColumnWrapper = styled('div')(() => {
+  return {
+    margin: '0 20px',
+    width: 200,
+    textAlign: 'left',
+  };
+});
+
+/**
+ * Stiled the ColumnHeading
+ */
+export const ColumnHeading = styled('p')(() => {
+  return {
+    fontWeight: 'bold',
+    marginBottom: 10,
+    position: 'relative',
+    display: 'inline-block',
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
     },
-    '& a': {
-      textDecoration: 'none',
-      color: '#000000',
+  };
+});
+
+/**
+ * Stiled the RightsWrapper
+ */
+export const RightsWrapper = styled('div')(() => {
+  return {
+    backgroundColor: '#161c27',
+    color: 'white',
+    fontSize: 17,
+    padding: 16,
+  };
+});
+
+/**
+ * Stiled the Link
+ */
+export const Link = styled('a')(() => {
+  return {
+    color: '#ffffff',
+    textDecoration: 'inherit',
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
     },
-    '& svg': {
-      color: '#fff',
+  };
+});
+
+/**
+ * Stiled the ContactInfo
+ */
+export const ContactInfo = styled('p')(() => {
+  return {
+    display: 'flex',
+    alignItems: 'center',
+    whiteSpace: 'nowrap',
+  };
+});
+
+/**
+ * Stiled the IconWrapper
+ */
+export const IconWrapper = styled('span')(() => {
+  return {
+    marginLeft: 5,
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
     },
-    '& .MuiSvgIcon-root': {
-      color: '#fff',
+  };
+});
+
+/**
+ * Stiled the Underline
+ */
+export const Underline = styled('span')(() => {
+  return {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '50%',
+    height: 1,
+    backgroundColor: 'hsl(220deg 29.77% 41.63%)',
+  };
+});
+
+export const Paragraph = styled('p')(() => {
+  return {
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
     },
   };
 });

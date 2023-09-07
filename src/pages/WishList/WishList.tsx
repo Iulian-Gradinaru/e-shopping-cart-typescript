@@ -1,12 +1,25 @@
 import React, { useContext } from 'react';
 import { ContextValueInterface, ShopContext } from '../../context/shop-context';
 import { PRODUCTS } from '../../utils/products';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import {
-  Description,
   InputHandler,
-} from '../../components/CartItem/CartItem.styles';
+  Description,
+  CustomImage,
+  ContainerProduct,
+  Paragraph,
+  Price,
+  ContainerButtons,
+  StylesButton,
+  StylesParagraph,
+  CountHandler,
+  Title,
+  HeartIcon,
+  WishListTitle,
+  WishListContainer,
+} from './WishList.styles';
+import { CustomButton } from '../Shop/Shop.style';
+import { Link } from 'react-router-dom';
 
 export const WishList: React.FC = () => {
   const context = useContext<ContextValueInterface | null>(ShopContext);
@@ -37,81 +50,69 @@ export const WishList: React.FC = () => {
 
     return (
       <div key={product.id}>
-        <div className="image">
-          <img src={product.productImage} alt="" />
-        </div>
-        <h2>{product.productName}</h2>
-        <p>{product.descriptions}</p>
-        <button
-          style={{
-            background: 'none',
-            border: 'none',
-            padding: 0,
-            cursor: 'pointer',
-          }}
-          onClick={() => handleRemoveFromWishlist(product.id)}
-        >
-          <FontAwesomeIcon
-            icon={faHeart}
-            beat
-            size="xl"
-            style={{ color: '#ff0000' }}
-          />
-        </button>
-
         <Description className="description">
-          <p>
-            <b>{product.productName}</b>
-          </p>
-          <p> Price: ${product.price}</p>
-          <div className="countHandler">
-            <p>Add To Cart</p>
+          <div>
+            <CustomImage src={product.productImage} />
             <button
-              disabled={cartItems[product.id] <= 0}
-              onClick={() => removeFromCart(product.id)}
               style={{
-                background: '#007bff', // Stilizare pentru butonul "Add to Cart"
-                color: '#fff',
+                background: 'none',
                 border: 'none',
-                padding: '4px 8px',
+                padding: 0,
                 cursor: 'pointer',
-                marginLeft: '8px',
               }}
+              onClick={() => handleRemoveFromWishlist(product.id)}
             >
-              -
+              <HeartIcon className="iulian" icon={faHeart} beat size="2xl" />
             </button>
+            <Price style={{ textDecoration: 'line-through' }}>
+              Price: ${product.discount}
+            </Price>
+            <Price> Price: ${product.price}</Price>
 
-            <InputHandler
-              value={cartItems[product.id]}
-              onChange={(e) =>
-                updateCartItemCount(Number(e.target.value), product.id)
-              }
-            />
+            <CountHandler className="countHandler">
+              <StylesParagraph>Add To Cart</StylesParagraph>
+              <StylesButton
+                disabled={cartItems[product.id] <= 0}
+                onClick={() => removeFromCart(product.id)}
+              >
+                -
+              </StylesButton>
 
-            <button
-              onClick={() => addToCart(product.id)}
-              style={{
-                background: '#007bff', // Stilizare pentru butonul "Add to Cart"
-                color: '#fff',
-                border: 'none',
-                padding: '4px 8px',
-                cursor: 'pointer',
-                marginLeft: '8px',
-              }}
-            >
-              {' '}
-              +{' '}
-            </button>
+              <InputHandler
+                value={cartItems[product.id]}
+                onChange={(e) =>
+                  updateCartItemCount(Number(e.target.value), product.id)
+                }
+              />
+
+              <StylesButton onClick={() => addToCart(product.id)}>
+                {' '}
+                +{' '}
+              </StylesButton>
+            </CountHandler>
           </div>
+
+          <ContainerProduct className="containerProduct">
+            <Title>{product.productName}</Title>
+            <Paragraph>{product.descriptions}</Paragraph>
+          </ContainerProduct>
         </Description>
       </div>
     );
   });
 
   return (
-    <div>
-      <h1>Wishlist</h1>
+    <WishListContainer>
+      <WishListTitle>Wishlist</WishListTitle>
       {wishlistItems}
-    </div>
+      <ContainerButtons className="container-buttons">
+        <Link to={'/'}>
+          <CustomButton>Go to Shop</CustomButton>
+        </Link>
+        <Link to={'/cart'}>
+          <CustomButton>Go to Cart</CustomButton>
+        </Link>
+      </ContainerButtons>
+    </WishListContainer>
   );
 };
