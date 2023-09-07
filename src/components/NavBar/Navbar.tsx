@@ -1,4 +1,5 @@
 import { Heart, ShoppingCart, Storefront } from 'phosphor-react';
+import logo from '../../assets/products/logo.png';
 
 import { useState } from 'react';
 
@@ -16,12 +17,12 @@ import { ShopContext } from '../../context/shop-context';
 import {
   Container,
   ContainerParagraph,
-  Paragraph,
   ContainerLinks,
   MobileMenu,
   CustomNavLink,
   MobileNavLink,
   ContainerWrapper,
+  CustomLogo,
 } from './NavBar.styles';
 
 import { Link } from 'react-router-dom';
@@ -60,7 +61,7 @@ export const NavBar: React.FC = () => {
    */
   const navbarContent = (
     <>
-      <ContainerLinks>
+      <ContainerLinks className="iulian">
         <CustomNavLink exact={true} to="/" activeStyle={{ color: '#ffff' }}>
           <Storefront size={32} />
         </CustomNavLink>
@@ -116,15 +117,23 @@ export const NavBar: React.FC = () => {
           activeStyle={{ color: '#ffff' }}
           onClick={toggleMobileMenu}
         >
-          Home
+          <Storefront size={32} />
         </MobileNavLink>
         <MobileNavLink
           exact
-          to="/projects"
+          to="/wistlist"
           activeStyle={{ color: '#ffff' }}
           onClick={toggleMobileMenu}
         >
-          Projects
+          <Heart size={32} />
+        </MobileNavLink>
+        <MobileNavLink
+          exact
+          to="/cart"
+          activeStyle={{ color: '#ffff' }}
+          onClick={toggleMobileMenu}
+        >
+          <ShoppingCart size={32} />
         </MobileNavLink>
       </MobileMenu>
     </>
@@ -135,7 +144,7 @@ export const NavBar: React.FC = () => {
       <ContainerWrapper>
         <ContainerParagraph>
           <Link style={{ textDecoration: 'none' }} to="/">
-            <Paragraph>Iulian Shop</Paragraph>
+            <CustomLogo className="logo" src={logo} alt="" />
           </Link>
         </ContainerParagraph>
         {!isMobileView && navbarContent}

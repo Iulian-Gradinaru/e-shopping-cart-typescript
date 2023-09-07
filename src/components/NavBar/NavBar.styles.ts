@@ -84,11 +84,14 @@ export const Paragraph = styled('p')(({ theme }) => {
 /**
  * Styles the Container Links
  */
-export const ContainerLinks = styled('div')(() => {
+export const ContainerLinks = styled('div')(({ theme }) => {
   return {
     paddingRight: 36,
     display: 'flex',
     gap: 20,
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 44,
+    },
   };
 });
 
@@ -170,5 +173,15 @@ export const MobileNavLink = styled(NavLink)(({ theme }) => {
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
     },
+  };
+});
+
+export const CustomLogo = styled('img')(() => {
+  return {
+    width: 50,
+    height: 50,
+    borderRadius: '38%',
+    marginLeft: 30,
+    marginTop: 4,
   };
 });
