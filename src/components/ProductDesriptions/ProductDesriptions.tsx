@@ -5,10 +5,23 @@ import { useParams } from 'react-router-dom'; // Pentru a prelua id-ul produsulu
 import { PRODUCTS } from '../../utils/products';
 import { useContext } from 'react';
 import { ContextValueInterface, ShopContext } from '../../context/shop-context';
+import { CustomButton } from '../../pages/Shop/Shop.style';
 {
 }
-import { InputHandler } from './ProductDesriptions.styles';
-import { Description } from '../CartItem/CartItem.styles';
+import {
+  InputHandler,
+  Description,
+  CustomImage,
+  ContainerProduct,
+  Paragraph,
+  Price,
+  ContainerButtons,
+  StylesButton,
+  StylesParagraph,
+  CountHandler,
+  Title,
+} from './ProductDesriptions.styles';
+
 import { Link } from 'react-router-dom';
 
 export const ProductDescriptions: React.FC = () => {
@@ -30,40 +43,45 @@ export const ProductDescriptions: React.FC = () => {
 
   return (
     <div>
-      <img src={product.productImage} />
-      <h2>{product.productName}</h2>
-      <p>{product.descriptions}</p>
-
       <Description className="description">
-        <p>
-          <b>{product.productName}</b>
-        </p>
-        <p> Price: ${product.price}</p>
-        <div className="countHandler">
-          <p>Add To Cart</p>
-          <button
-            disabled={cartItems[product.id] <= 0}
-            onClick={() => removeFromCart(product.id)}
-          >
-            -
-          </button>
+        <div>
+          <CustomImage src={product.productImage} />
+          <Price> Price: ${product.price}</Price>
+          <CountHandler className="countHandler">
+            <StylesParagraph>Add To Cart</StylesParagraph>
+            <StylesButton
+              disabled={cartItems[product.id] <= 0}
+              onClick={() => removeFromCart(product.id)}
+            >
+              -
+            </StylesButton>
 
-          <InputHandler
-            value={cartItems[product.id]}
-            onChange={(e) =>
-              updateCartItemCount(Number(e.target.value), product.id)
-            }
-          />
+            <InputHandler
+              value={cartItems[product.id]}
+              onChange={(e) =>
+                updateCartItemCount(Number(e.target.value), product.id)
+              }
+            />
 
-          <button onClick={() => addToCart(product.id)}> + </button>
+            <StylesButton onClick={() => addToCart(product.id)}>
+              {' '}
+              +{' '}
+            </StylesButton>
+          </CountHandler>
         </div>
+        <ContainerProduct className="containerProduct">
+          <Title>{product.productName}</Title>
+          <Paragraph>{product.descriptions}</Paragraph>
+        </ContainerProduct>
       </Description>
-      <Link to={'/'}>
-        <button>Go to Shop</button>
-      </Link>
-      <Link to={'/cart'}>
-        <button>Go to Cart</button>
-      </Link>
+      <ContainerButtons className="container-buttons">
+        <Link to={'/'}>
+          <CustomButton>Go to Shop</CustomButton>
+        </Link>
+        <Link to={'/cart'}>
+          <CustomButton>Go to Cart</CustomButton>
+        </Link>
+      </ContainerButtons>
     </div>
   );
 };

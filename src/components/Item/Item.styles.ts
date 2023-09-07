@@ -15,7 +15,7 @@ export const Container = styled('div')(({ theme }) => {
     alignItems: 'center',
     boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
     marginBottom: 50,
-    backgroundColor: 'rgba(215, 205, 192, 0.5)',
+    backgroundColor: 'rgba(193, 201, 233, 0.5)',
 
     '&:hover': {
       cursor: 'pointer',

@@ -32,7 +32,8 @@ export const PRODUCTS: ProductData[] = [
     price: 99.99,
     discount: 119.99,
     productImage: product1,
-    descriptions: 'Descriere pentru Calvin Klein...',
+    descriptions:
+      "Burberry Goddess Eau de Parfum is a delightful choice for lovers of gourmand and aromatic scents. This unique scent is driven by a powerful trio of vanillas, which add a sweet and sensual note. At the top, you'll feel an infusion of vanilla with woody undertones that add a warm and refined note. At the heart of the fragrance is a richly sweet vanilla caviar that adds a more intense aroma and tint. At the base, we find a vanilla absolute enriched with bright lavender for an intriguing and balanced combination. Burberry Goddess Eau de Parfum will captivate you with its captivating and refined vanilla aroma, giving you a special and authentic fragrance experience.",
   },
   {
     id: 2,

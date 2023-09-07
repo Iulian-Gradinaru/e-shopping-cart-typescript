@@ -7,8 +7,13 @@ import {
   ProductsGrid,
   SearchBar,
   SearchContainer,
-  Button,
+  StylesButton,
   Sort,
+  InputContainer,
+  Label,
+  Select,
+  CustomButton,
+  CustomSpan,
 } from './Shop.style';
 import { useEffect, useState, useRef } from 'react';
 import { PRODUCTS, ProductData } from '../../utils/products';
@@ -70,26 +75,32 @@ export const Shop = () => {
   return (
     <ShopContainer className="shop">
       <Carousel />
-      <SearchContainer>
-        <SearchBar
-          type="text"
-          placeholder="Search products..."
-          value={searchTerm}
-          onChange={handleChange}
-          ref={inputRef}
-        />
-        <Button className="btn-search" onClick={handleSearch}>
-          <SearchIcon />
-        </Button>
+      <SearchContainer className="search-container">
+        <InputContainer className="input-container">
+          <SearchBar
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={handleChange}
+            ref={inputRef}
+          />
+          <StylesButton className="btn-search" onClick={handleSearch}>
+            <SearchIcon />
+          </StylesButton>
+        </InputContainer>
         <Sort className="sort">
-          <label>
+          <Label className="label">
             Sort by price:
-            <select onChange={handleSortOrderChange} value={sortOrder || ''}>
+            <Select
+              className="select"
+              onChange={handleSortOrderChange}
+              value={sortOrder || ''}
+            >
               <option value="">Select </option>
               <option value="asc">Price: Low to High</option>
               <option value="desc">Price: High to Low</option>
-            </select>
-          </label>
+            </Select>
+          </Label>
         </Sort>
       </SearchContainer>
 
@@ -100,19 +111,25 @@ export const Shop = () => {
       </ProductsGrid>
 
       <div className="pagination">
-        <button
+        <CustomButton
           disabled={currentPage === 1}
-          onClick={() => setCurrentPage((prevstate) => prevstate - 1)}
+          onClick={() => {
+            setCurrentPage((prevstate) => prevstate - 1);
+            window.scrollTo(0, 0);
+          }}
         >
-          Previous
-        </button>
-        <span>{currentPage}</span>
-        <button
+          Prev
+        </CustomButton>
+        <CustomSpan className="custom-span">{currentPage}</CustomSpan>
+        <CustomButton
           disabled={lastIndex >= filteredProducts.length}
-          onClick={() => setCurrentPage((prevstate) => prevstate + 1)}
+          onClick={() => {
+            setCurrentPage((prevstate) => prevstate + 1);
+            window.scrollTo(0, 0);
+          }}
         >
           Next
-        </button>
+        </CustomButton>
       </div>
     </ShopContainer>
   );

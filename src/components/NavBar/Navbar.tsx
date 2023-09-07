@@ -23,6 +23,8 @@ import {
   MobileNavLink,
   ContainerWrapper,
   CustomLogo,
+  WishlistContainer,
+  WishlistCounter,
 } from './NavBar.styles';
 
 import { Link } from 'react-router-dom';
@@ -66,48 +68,20 @@ export const NavBar: React.FC = () => {
           <Storefront size={32} />
         </CustomNavLink>
         <CustomNavLink exact to="/wishlist" activeStyle={{ color: '#ffff' }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          <WishlistContainer>
             <Heart size={32} />
             {getWishlistItemCount() > 0 && (
-              <span
-                style={{
-                  marginLeft: '0px',
-                  fontSize: '12px', // Mărimea textului pentru cifră
-                  fontWeight: 'bold', // Stilul textului pentru cifră
-                  backgroundColor: '#ff0000', // Fundal pentru cifră
-                  color: '#ffffff', // Culoarea textului pentru cifră
-                  borderRadius: '50%', // Rotunjirea pentru cifră
-                  padding: '2px 6px', // Spațierea pentru cifră
-                  position: 'relative', // Poziționare relativă pentru a se suprapune peste inimă
-                  top: '0px', // Ajustarea poziției pe verticală pentru a se suprapune
-                }}
-              >
-                {getWishlistItemCount()}
-              </span>
+              <WishlistCounter>{getWishlistItemCount()}</WishlistCounter>
             )}
-          </div>
+          </WishlistContainer>
         </CustomNavLink>
         <CustomNavLink exact to="/cart" activeStyle={{ color: '#ffff' }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          <WishlistContainer>
             <ShoppingCart size={32} />
             {getCartItemCount() > 0 && (
-              <span
-                style={{
-                  marginLeft: '0px',
-                  fontSize: '12px', // Mărimea textului pentru cifră
-                  fontWeight: 'bold', // Stilul textului pentru cifră
-                  backgroundColor: '#ff0000', // Fundal pentru cifră
-                  color: '#ffffff', // Culoarea textului pentru cifră
-                  borderRadius: '50%', // Rotunjirea pentru cifră
-                  padding: '2px 6px', // Spațierea pentru cifră
-                  position: 'relative', // Poziționare relativă pentru a se suprapune peste inimă
-                  top: '0px', // Ajustarea poziției pe verticală pentru a se suprapune
-                }}
-              >
-                {getCartItemCount()}
-              </span>
+              <WishlistCounter>{getCartItemCount()}</WishlistCounter>
             )}
-          </div>
+          </WishlistContainer>
         </CustomNavLink>
       </ContainerLinks>
       <MobileMenu isOpen={isMobileMenuOpen} to={''}>

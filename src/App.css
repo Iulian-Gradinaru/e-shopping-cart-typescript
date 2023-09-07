@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 100px);
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   position: relative;
   background-image: url('./assets/products/shopping-pattern-background-design_260839-17.jpg');
 }

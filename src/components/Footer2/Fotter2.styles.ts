@@ -19,14 +19,29 @@ export const FooterContainer = styled('footer')(() => {
 /**
  * Stiled the SocialWrapper
  */
-export const SocialWrapper = styled('div')(() => {
+export const SocialWrapper = styled('div')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#161c27',
+    color: 'white',
+    padding: 7,
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+  };
+});
+
+export const ContainerParagraph = styled('div')(({ theme }) => {
   return {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'hsl(248.64deg 56.05% 56.27%)',
-    color: 'white',
-    padding: 7,
+
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   };
 });
 
@@ -86,6 +101,10 @@ export const ColumnHeading = styled('p')(() => {
     marginBottom: 10,
     position: 'relative',
     display: 'inline-block',
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
+    },
   };
 });
 
@@ -94,7 +113,7 @@ export const ColumnHeading = styled('p')(() => {
  */
 export const RightsWrapper = styled('div')(() => {
   return {
-    backgroundColor: 'hsl(218.82deg 27.87% 11.96%)',
+    backgroundColor: '#161c27',
     color: 'white',
     fontSize: 17,
     padding: 16,
@@ -108,6 +127,10 @@ export const Link = styled('a')(() => {
   return {
     color: '#ffffff',
     textDecoration: 'inherit',
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
+    },
   };
 });
 
@@ -128,6 +151,10 @@ export const ContactInfo = styled('p')(() => {
 export const IconWrapper = styled('span')(() => {
   return {
     marginLeft: 5,
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
+    },
   };
 });
 
@@ -142,5 +169,14 @@ export const Underline = styled('span')(() => {
     width: '50%',
     height: 1,
     backgroundColor: 'hsl(220deg 29.77% 41.63%)',
+  };
+});
+
+export const Paragraph = styled('p')(() => {
+  return {
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#7493d0',
+    },
   };
 });
