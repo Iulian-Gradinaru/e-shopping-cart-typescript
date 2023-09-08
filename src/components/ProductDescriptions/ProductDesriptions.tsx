@@ -20,9 +20,11 @@ import {
   StylesParagraph,
   CountHandler,
   Title,
+  ProductName,
 } from './ProductDesriptions.styles';
 
 import { Link } from 'react-router-dom';
+import { ProductType } from '../Item/Item.styles';
 
 export const ProductDescriptions: React.FC = () => {
   const context = useContext<ContextValueInterface | null>(ShopContext);
@@ -74,7 +76,10 @@ export const ProductDescriptions: React.FC = () => {
           </CountHandler>
         </div>
         <ContainerProduct className="containerProduct">
-          <Title>{product.productName}</Title>
+          <ProductName className="product-name">
+            <Title>{product.productName}</Title>
+            <ProductType className="product-type">{product.type}</ProductType>
+          </ProductName>
           <Paragraph>{product.descriptions}</Paragraph>
         </ContainerProduct>
       </Description>

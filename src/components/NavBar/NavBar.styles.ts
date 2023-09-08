@@ -31,6 +31,7 @@ export const Container = styled('nav')(({ theme }) => {
       flexDirection: 'column',
       height: 'auto',
       marginBottom: -10,
+      width: '52vh',
     },
   };
 });

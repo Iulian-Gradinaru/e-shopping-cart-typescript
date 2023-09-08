@@ -6,8 +6,15 @@ import {
   CartItemContainer,
   Image,
   Description,
+  ProductName,
+  Price,
+  Discount,
+  CountHandler,
+  StylesButton,
+  StylesParagraph,
   InputHandler,
 } from './CartItem.styles';
+import { ProductType } from '../Item/Item.styles';
 
 export const CartItem: React.FC<CartItemProps> = (props) => {
   const { product } = props;
@@ -23,20 +30,32 @@ export const CartItem: React.FC<CartItemProps> = (props) => {
     <CartItemContainer className="cartItem">
       <Image src={product.productImage} alt={product.productName} />
       <Description className="description">
-        <p>
+        <ProductName className="product-name">
           <b>{product.productName}</b>
-        </p>
-        <p> Price: ${product.price}</p>
-        <div className="countHandler">
-          <button onClick={() => removeFromCart(product.id)}> - </button>
+          <ProductType className="product-type">{product.type}</ProductType>
+        </ProductName>
+        <div>
+          <Discount style={{}}> Price: ${product.discount}</Discount>
+          <Price> Price: ${product.price}</Price>
+        </div>
+        <CountHandler className="countHandler">
+          <StylesParagraph>Add Item</StylesParagraph>
+          <StylesButton
+            disabled={cartItems[product.id] <= 0}
+            onClick={() => removeFromCart(product.id)}
+          >
+            -
+          </StylesButton>
+
           <InputHandler
             value={cartItems[product.id]}
             onChange={(e) =>
               updateCartItemCount(Number(e.target.value), product.id)
             }
           />
-          <button onClick={() => addToCart(product.id)}> + </button>
-        </div>
+
+          <StylesButton onClick={() => addToCart(product.id)}> + </StylesButton>
+        </CountHandler>
       </Description>
     </CartItemContainer>
   );

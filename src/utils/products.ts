@@ -19,6 +19,7 @@ import product17 from '../assets/products/Zaina.jpg';
 export interface ProductData {
   id: number;
   productName: string;
+  type?: string;
   price: number;
   productImage: string;
   descriptions: string;
@@ -28,7 +29,8 @@ export interface ProductData {
 export const PRODUCTS: ProductData[] = [
   {
     id: 1,
-    productName: 'Burberry',
+    productName: 'Burberry Goddess',
+    type: 'Apa De Parfum 50 ml',
     price: 99.99,
     discount: 119.99,
     productImage: product1,

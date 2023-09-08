@@ -1,42 +1,26 @@
 import React, { useState } from 'react';
-import { styled } from '@mui/system';
+
 import { useHistory } from 'react-router-dom';
 import {
   Typography,
-  TextField,
   FormControl,
-  InputLabel,
-  Select,
   MenuItem,
   TextareaAutosize,
-  Button,
   SelectChangeEvent,
+  InputLabel,
+  Select,
 } from '@mui/material';
 import { CreditCardForm } from '../CreditCardForm';
-
-const Container = styled('div')({
-  display: 'flex',
-  flexDirection: 'column',
-  maxWidth: '400px',
-  margin: '0 auto',
-  padding: '20px',
-});
-
-const FormTitle = styled(Typography)({
-  fontSize: '24px',
-  fontWeight: 'bold',
-  marginBottom: '16px',
-});
-
-const FormSection = styled('div')({
-  marginBottom: '16px',
-});
-
-const SubmitButton = styled(Button)({
-  backgroundColor: '#007bff',
-  color: '#fff',
-  marginTop: '16px',
-});
+import {
+  Container,
+  FormSectionShiping,
+  FormSectionBilling,
+  FormSectionPayment,
+  FormSectionComments,
+  FormTitle,
+  SubmitButton,
+  CustomTextField,
+} from './Checkout.styles';
 
 export const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState('cash');
@@ -60,58 +44,59 @@ export const Checkout = () => {
       <form onSubmit={handleSubmit}>
         <FormTitle variant="h1">Payments</FormTitle>
 
-        <FormSection>
+        <FormSectionShiping>
           <Typography variant="h5">Shipping Address</Typography>
-          <TextField
+          <CustomTextField
             label="Address"
             variant="outlined"
             fullWidth
             margin="normal"
             required
           />
-          <TextField
+          <CustomTextField
             label="City"
             variant="outlined"
             fullWidth
             margin="normal"
           />
-          <TextField
+          <CustomTextField
             label="Postal Code"
             variant="outlined"
             fullWidth
             margin="normal"
             required
           />
-        </FormSection>
+        </FormSectionShiping>
 
-        <FormSection>
+        <FormSectionBilling>
           <Typography variant="h5">Billing Address</Typography>
-          <TextField
+          <CustomTextField
             label="Address"
             variant="outlined"
             fullWidth
             margin="normal"
             required
           />
-          <TextField
+          <CustomTextField
             label="City"
             variant="outlined"
             fullWidth
             margin="normal"
           />
-          <TextField
+          <CustomTextField
             label="Postal Code"
             variant="outlined"
             fullWidth
             margin="normal"
             required
           />
-        </FormSection>
+        </FormSectionBilling>
 
-        <FormSection>
+        <FormSectionPayment>
           <FormControl fullWidth variant="outlined">
             <InputLabel>Payment Method</InputLabel>
             <Select
+              style={{ backgroundColor: '#fff' }}
               label="Payment Method"
               value={paymentMethod}
               onChange={handlePaymentMethodChange}
@@ -121,18 +106,18 @@ export const Checkout = () => {
               <MenuItem value="card">Credit Card</MenuItem>
             </Select>
           </FormControl>
-        </FormSection>
+        </FormSectionPayment>
 
         {paymentMethod === 'card' && <CreditCardForm />}
 
-        <FormSection>
+        <FormSectionComments>
           <Typography variant="h5">Additional Comments</Typography>
           <TextareaAutosize
             minRows={4}
             placeholder="Add your comments here..."
             style={{ width: '100%' }}
           />
-        </FormSection>
+        </FormSectionComments>
         {/* Butonul de submit trebuie să fie de tip "submit" pentru a declanșa trimiterea */}
         <SubmitButton type="submit" variant="contained">
           Submit Order

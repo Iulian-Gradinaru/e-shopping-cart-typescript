@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import './CreditCardForm.css'; // Stilizarea CSS pentru formular
+// import './CreditCardForm.css'; // Stilizarea CSS pentru formular
 import { useHistory } from 'react-router-dom'; // Importă useHistory pentru redirecționare
+
+import {
+  CreditCard,
+  CreditCardChip,
+  InputField,
+  CreditCardInfo,
+} from './CreditCardForm.styles';
 
 interface FormData {
   cardNumber: string;
@@ -34,12 +41,12 @@ export const CreditCardForm: React.FC = () => {
   };
 
   return (
-    <div className="credit-card">
-      <div className="credit-cardchip"></div>
-      <form onSubmit={handleSubmit}>
+    <CreditCard className="credit-card">
+      <CreditCardChip className="credit-cardchip"></CreditCardChip>
+      <form style={{ width: '100%' }} onSubmit={handleSubmit}>
         <div className="credit-cardnumber">
           <label htmlFor="cardNumber">Card Number</label>
-          <input
+          <InputField
             type="text"
             id="cardNumber"
             name="cardNumber"
@@ -50,7 +57,7 @@ export const CreditCardForm: React.FC = () => {
             required
           />
         </div>
-        <div className="credit-cardinfo">
+        <CreditCardInfo className="credit-cardinfo">
           <div className="credit-cardinfo-item">
             <label htmlFor="cardHolder">Card Holder</label>
             <input
@@ -89,8 +96,8 @@ export const CreditCardForm: React.FC = () => {
               required
             />
           </div>
-        </div>
+        </CreditCardInfo>
       </form>
-    </div>
+    </CreditCard>
   );
 };

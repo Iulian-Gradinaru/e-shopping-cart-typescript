@@ -17,9 +17,11 @@ import {
   HeartIcon,
   WishListTitle,
   WishListContainer,
+  ProductName,
 } from './WishList.styles';
 import { CustomButton } from '../Shop/Shop.style';
 import { Link } from 'react-router-dom';
+import { ProductType } from '../../components/Item/Item.styles';
 
 export const WishList: React.FC = () => {
   const context = useContext<ContextValueInterface | null>(ShopContext);
@@ -93,7 +95,10 @@ export const WishList: React.FC = () => {
           </div>
 
           <ContainerProduct className="containerProduct">
-            <Title>{product.productName}</Title>
+            <ProductName className="product-name">
+              <Title>{product.productName}</Title>
+              <ProductType className="product-type">{product.type}</ProductType>
+            </ProductName>
             <Paragraph>{product.descriptions}</Paragraph>
           </ContainerProduct>
         </Description>

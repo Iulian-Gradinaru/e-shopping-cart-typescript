@@ -33,15 +33,25 @@ export const CustomImage = styled('img')(({ theme }) => {
 export const Paragraph = styled('p')(({ theme }) => {
   return {
     width: 300,
-    marginRight: 40,
+    marginRight: -20,
 
     [theme.breakpoints.down('sm')]: {
       width: 300,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      marginLeft: 50,
+      marginLeft: 0,
     },
+  };
+});
+export const ProductName = styled('div')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+
+    [theme.breakpoints.down('sm')]: {},
   };
 });
 
@@ -143,6 +153,6 @@ export const Title = styled('h2')(({ theme }) => {
   return {
     marginTop: -80,
 
-    [theme.breakpoints.down('sm')]: { marginTop: 30 },
+    [theme.breakpoints.down('sm')]: { marginTop: 30, marginLeft: 33 },
   };
 });

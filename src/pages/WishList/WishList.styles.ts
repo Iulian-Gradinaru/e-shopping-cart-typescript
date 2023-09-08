@@ -210,3 +210,14 @@ export const WishListContainer = styled('div')(({ theme }) => {
     },
   };
 });
+
+export const ProductName = styled('div')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+
+    [theme.breakpoints.down('sm')]: { marginLeft: 30 },
+  };
+});

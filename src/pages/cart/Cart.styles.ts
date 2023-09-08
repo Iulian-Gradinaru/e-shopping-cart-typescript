@@ -42,6 +42,7 @@ export const ContainerChechout = styled('h1')(({ theme }) => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'column',
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
       display: 'flex',
@@ -50,5 +51,19 @@ export const ContainerChechout = styled('h1')(({ theme }) => {
       flexDirection: 'column',
     },
     [theme.breakpoints.down('md')]: {},
+  };
+});
+
+export const Title = styled('h2')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   };
 });

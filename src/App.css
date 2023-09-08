@@ -12,6 +12,12 @@
   background-image: url('./assets/products/shopping-pattern-background-design_260839-17.jpg');
 }
 
+@media (max-width: 768px) {
+  .main-content {
+    width: 51vh;
+  }
+}
+
 /* footer {
   position: absolute;
   bottom: 0;

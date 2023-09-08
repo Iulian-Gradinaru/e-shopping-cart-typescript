@@ -31,28 +31,6 @@ export const Container = styled('div')(({ theme }) => {
   };
 });
 
-// export const Container = styled('div')(({ theme }) => {
-//   return {
-//     width: '30%',
-//     height: '100%',
-//     display: 'flex',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.2)',
-//     borderRadius: '25px',
-//     margin: '15px',
-//     [theme.breakpoints.down('sm')]: {
-//       width: '85%',
-//       margin: 10,
-//       display: 'flex',
-//       justifyContent: 'center',
-//       aligntems: 'center',
-//       flexDirection: 'column',
-//     },
-//     [theme.breakpoints.down('md')]: {},
-//   };
-// });
-
 export const Image = styled('img')(({ theme }) => {
   return {
     width: 300,
@@ -71,6 +49,17 @@ export const Image = styled('img')(({ theme }) => {
 export const Descriptions = styled('div')({
   marginTop: 20,
   textAlign: 'center',
+});
+export const ProductName = styled('p')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+});
+
+export const ProductType = styled('b')({
+  marginTop: 10,
+  whiteSpace: 'nowrap',
 });
 
 export const AddToCartButton = styled('button')(({ theme }) => {

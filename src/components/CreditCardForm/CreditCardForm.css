@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-.credit-cardnumber input,
+/* .credit-cardnumber input,
 .credit-cardinfo input {
   width: 100%;
   border: none;
@@ -43,7 +43,7 @@
 .credit-cardnumber input:focus,
 .credit-cardinfo input:focus {
   border-bottom-color: #007bff;
-}
+} */
 
 .credit-cardinfo {
   display: flex;

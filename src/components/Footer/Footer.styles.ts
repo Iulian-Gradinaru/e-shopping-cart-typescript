@@ -6,13 +6,16 @@ import { styled } from '@mui/system';
 /**
  * Stiled the FooterContainer
  */
-export const FooterContainer = styled('footer')(() => {
+export const FooterContainer = styled('footer')(({ theme }) => {
   return {
     textAlign: 'center',
     // position: 'fixed',
     // left: 0,
     // bottom: 0,
     width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      width: '52vh',
+    },
   };
 });
 

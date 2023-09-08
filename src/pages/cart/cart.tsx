@@ -10,6 +10,7 @@ import {
   CheckoutButton,
   CartMessage,
   ContainerChechout,
+  Title,
 } from './Cart.styles';
 
 export const Cart = () => {
@@ -29,9 +30,9 @@ export const Cart = () => {
 
   return (
     <Container className="cart">
-      <div>
+      {/* <div>
         <h1>Your Cart Items</h1>
-      </div>
+      </div> */}
       <CartContainer className="cart">
         {PRODUCTS.map((product) => {
           if (cartItems[product.id.toString()] !== 0) {
@@ -59,7 +60,7 @@ export const Cart = () => {
           </div>
         </ContainerChechout>
       ) : (
-        <h1> Your Shopping Cart is Empty</h1>
+        <Title className="title"> Your Shopping Cart is Empty</Title>
       )}
     </Container>
   );
