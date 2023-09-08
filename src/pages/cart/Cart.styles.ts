@@ -67,3 +67,14 @@ export const Title = styled('h2')(({ theme }) => {
     },
   };
 });
+
+export const ContainerButton = styled('h1')(({ theme }) => {
+  return {
+    display: 'flex',
+    gap: 30,
+    [theme.breakpoints.down('sm')]: {
+      // textAlign: 'center',
+    },
+    [theme.breakpoints.down('md')]: {},
+  };
+});

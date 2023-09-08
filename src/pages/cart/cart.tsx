@@ -7,11 +7,12 @@ import { useHistory } from 'react-router-dom';
 import {
   Container,
   CartContainer,
-  CheckoutButton,
+  ContainerButton,
   CartMessage,
   ContainerChechout,
   Title,
 } from './Cart.styles';
+import { CustomButton } from '../Shop/Shop.style';
 
 export const Cart = () => {
   const context = useContext<ContextValueInterface | null>(ShopContext);
@@ -45,19 +46,19 @@ export const Cart = () => {
       {totalAmount > 0 ? (
         <ContainerChechout className="checkout">
           <p> Subtotal: ${totalAmount} </p>
-          <div className="btn-checkout">
-            <CheckoutButton onClick={() => history.push('/')}>
-              Continue Shopping
-            </CheckoutButton>
-            <CheckoutButton
+          <ContainerButton className="btn-checkout">
+            <CustomButton onClick={() => history.push('/')}>
+              Go to Shop
+            </CustomButton>
+            <CustomButton
               onClick={() => {
                 checkout();
                 history.push('/checkout');
               }}
             >
               Checkout
-            </CheckoutButton>
-          </div>
+            </CustomButton>
+          </ContainerButton>
         </ContainerChechout>
       ) : (
         <Title className="title"> Your Shopping Cart is Empty</Title>
