@@ -37,12 +37,15 @@ export const CartMessage = styled('h1')(({ theme }) => {
   };
 });
 
-export const ContainerChechout = styled('h1')(({ theme }) => {
+export const ContainerChechout = styled('div')(({ theme }) => {
   return {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    fontSize: 'x-large',
+    fontWeight: 600,
+    color: 'red',
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
       display: 'flex',
@@ -68,13 +71,13 @@ export const Title = styled('h2')(({ theme }) => {
   };
 });
 
-export const ContainerButton = styled('h1')(({ theme }) => {
+export const ContainerButton = styled('button')(({ theme }) => {
   return {
     display: 'flex',
     gap: 30,
-    [theme.breakpoints.down('sm')]: {
-      // textAlign: 'center',
-    },
+    border: 'none',
+    backgroundColor: 'transparent',
+    [theme.breakpoints.down('sm')]: {},
     [theme.breakpoints.down('md')]: {},
   };
 });

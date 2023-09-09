@@ -31,10 +31,12 @@ export const Image = styled('img')(({ theme }) => ({
   padding: '10px',
   transition: 'transform 0.3s ease-in',
   margin: 10,
+  borderRadius: 20,
 
   '&:hover': {
     transform: 'scale(1.1)',
     cursor: 'pointer',
+    borderRadius: 20,
   },
 
   [theme.breakpoints.down('sm')]: {

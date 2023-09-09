@@ -23,7 +23,13 @@ export const CustomImage = styled('img')(({ theme }) => {
     width: 400,
     marginRight: 40,
     marginTop: 50,
-    // position: 'relative',
+    borderRadius: 10,
+    transition: 'transform 0.3s ease-in',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      cursor: 'pointer',
+      borderRadius: 10,
+    },
 
     [theme.breakpoints.down('sm')]: {
       marginLeft: 50,
@@ -32,24 +38,6 @@ export const CustomImage = styled('img')(({ theme }) => {
     },
   };
 });
-
-// export const ButtonHeart = styled('button')(({ theme }) => {
-//   return {
-//     background: 'none',
-//     border: 'none',
-//     padding: 0,
-//     cursor: 'pointer',
-//     marginBottom: 360,
-//     marginLeft: 170,
-//     // position: 'relative',
-
-//     [theme.breakpoints.down('sm')]: {
-//       marginLeft: 50,
-//       marginTop: 20,
-//       width: 230,
-//     },
-//   };
-// });
 
 export const HeartIcon = styled(FontAwesomeIcon)(({ theme }) => {
   return {

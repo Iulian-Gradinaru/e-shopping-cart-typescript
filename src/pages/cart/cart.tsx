@@ -31,9 +31,6 @@ export const Cart = () => {
 
   return (
     <Container className="cart">
-      {/* <div>
-        <h1>Your Cart Items</h1>
-      </div> */}
       <CartContainer className="cart">
         {PRODUCTS.map((product) => {
           if (cartItems[product.id.toString()] !== 0) {

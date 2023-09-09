@@ -21,6 +21,13 @@ export const CustomImage = styled('img')(({ theme }) => {
     width: 400,
     marginRight: 40,
     marginTop: 50,
+    borderRadius: 10,
+    transition: 'transform 0.3s ease-in',
+    '&:hover': {
+      transform: 'scale(1.1)',
+      cursor: 'pointer',
+      borderRadius: 10,
+    },
 
     [theme.breakpoints.down('sm')]: {
       marginLeft: 50,
@@ -154,5 +161,15 @@ export const Title = styled('h2')(({ theme }) => {
     marginTop: -80,
 
     [theme.breakpoints.down('sm')]: { marginTop: 30, marginLeft: 33 },
+  };
+});
+
+export const ProductDescriptionsTitle = styled('h1')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    [theme.breakpoints.down('sm')]: {},
   };
 });

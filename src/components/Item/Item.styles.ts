@@ -35,9 +35,11 @@ export const Image = styled('img')(({ theme }) => {
   return {
     width: 300,
     transition: 'transform 0.3s ease-in',
+    borderRadius: 10,
     '&:hover': {
       transform: 'scale(1.1)',
       cursor: 'pointer',
+      borderRadius: 10,
     },
     [theme.breakpoints.down('sm')]: {
       marginTop: 20,

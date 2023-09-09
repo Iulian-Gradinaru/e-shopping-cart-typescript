@@ -21,6 +21,7 @@ import {
   CountHandler,
   Title,
   ProductName,
+  ProductDescriptionsTitle,
 } from './ProductDesriptions.styles';
 
 import { Link } from 'react-router-dom';
@@ -35,16 +36,17 @@ export const ProductDescriptions: React.FC = () => {
 
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } = context;
 
-  const { productId } = useParams<{ productId: string }>(); // Preia id-ul produsului din URL
+  const { productId } = useParams<{ productId: string }>(); // Get product id from URL
   const product = PRODUCTS.find((p) => p.id === parseInt(productId, 10));
 
-  // Verifică dacă produsul există în lista de produse
+  // Check if the product exists in the product list
   if (!product) {
-    return <div>Produsul nu a fost găsit.</div>;
+    return <div>Product not found.</div>;
   }
 
   return (
     <div>
+      <ProductDescriptionsTitle>Product Descriptions</ProductDescriptionsTitle>
       <Description className="description">
         <div>
           <CustomImage src={product.productImage} />
