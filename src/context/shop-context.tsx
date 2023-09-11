@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext } from 'react';
 import { PRODUCTS, ProductData } from '../utils/products';
 import useLocalStorage from 'use-local-storage';
 
@@ -19,7 +19,7 @@ export interface ShopContextProps {
 export interface ContextValueInterface {
   wishlist: WishlistItemProps; // Adaugăm wishlist în interfața ContextValueInterface
   cartItems: CartItemProps;
-  showMessage: boolean;
+
   addToCart: (itemId: number) => void;
   updateCartItemCount: (newAmount: number, itemId: number) => void;
   removeFromCart: (itemId: number) => void;
@@ -29,7 +29,6 @@ export interface ContextValueInterface {
   removeFromWishlist: (itemId: number) => void;
   getWishlistItemCount: () => number;
   getCartItemCount: () => number;
-  addToCartWithMessage: (itemId: number) => void;
 }
 
 const getDefaultCart = () => {
@@ -53,9 +52,6 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
     {} // Inițial, wishlist este un obiect gol
   );
 
-  // Stare pentru a ține evidența afișării mesajului
-  const [showMessage, setShowMessage] = useState(false);
-
   const getTotalCartAmount = (): number => {
     let totalAmount = 0;
     for (const item in cartItems) {
@@ -68,22 +64,6 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
     }
     // Formatează totalAmount ca un număr cu două zecimale
     return parseFloat(totalAmount.toFixed(2));
-  };
-
-  // Funcție pentru a adăuga produsul în coș și afișa mesajul
-  const addToCartWithMessage = (itemId: number) => {
-    // Adăugați produsul în coș așa cum o faceți acum
-
-    // Setăm showMessage pe true pentru a afișa mesajul
-    setShowMessage(true);
-
-    // Programăm ascunderea mesajului după 3 secunde (3000 milisecunde)
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 3000); // 3 secunde
-
-    // Apoi, adăugăm produsul în coș
-    addToCart(itemId);
   };
 
   const addToCart = (itemId: number): void => {
@@ -156,19 +136,18 @@ export const ShopContextProvider: React.FC<ShopContextProps> = (props) => {
   };
 
   const contextValue: ContextValueInterface = {
-    wishlist, // Adăugăm wishlist în context
+    wishlist,
     cartItems,
-    showMessage,
+
     addToCart,
     updateCartItemCount,
     removeFromCart,
     getTotalCartAmount,
     checkout,
     removeFromWishlist,
-    addToWishlist, // Adăugăm metoda addToWishlist în context
+    addToWishlist,
     getWishlistItemCount,
     getCartItemCount,
-    addToCartWithMessage,
   };
 
   return (
