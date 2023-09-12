@@ -1,4 +1,4 @@
-import './NotificationMessage.css';
+import { Container, CustomPargraph } from './NotificationMessage.styles';
 import { NotificationMessageProps } from './NotificationMessage.types';
 
 export const NotificationMessage: React.FC<NotificationMessageProps> = ({
@@ -6,8 +6,8 @@ export const NotificationMessage: React.FC<NotificationMessageProps> = ({
   messageText,
 }) => {
   return showMessage ? (
-    <div className="modal">
-      <p>{messageText}</p>
-    </div>
+    <Container className="modal">
+      <CustomPargraph>{messageText}</CustomPargraph>
+    </Container>
   ) : null;
 };
