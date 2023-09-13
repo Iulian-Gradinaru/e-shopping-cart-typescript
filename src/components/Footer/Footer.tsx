@@ -118,12 +118,12 @@ export const Footer: React.FC = () => {
             <FontAwesomeIcon icon={faHouse} />
             <IconWrapper>Bucharest, RO</IconWrapper>
           </ContactInfo>
-          <p>
-            <FontAwesomeIcon icon={faEnvelope} />{' '}
+          <ContactInfo>
+            <FontAwesomeIcon icon={faEnvelope} />
             <Link href="mailto:info@example.com">
               iulian_gradinaru@yahoo.com
             </Link>
-          </p>
+          </ContactInfo>
           <p>
             <FontAwesomeIcon icon={faPhone} />{' '}
             <Link href="tel:0123456788">+40 722 358 516</Link>

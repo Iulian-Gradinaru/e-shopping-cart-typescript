@@ -64,10 +64,20 @@ export const NavBar: React.FC = () => {
   const navbarContent = (
     <>
       <ContainerLinks className="iulian">
-        <CustomNavLink exact={true} to="/" activeStyle={{ color: '#ffff' }}>
+        <CustomNavLink
+          exact={true}
+          to="/"
+          activeStyle={{ color: '#ffff' }}
+          title="Shop"
+        >
           <Storefront size={32} />
         </CustomNavLink>
-        <CustomNavLink exact to="/wishlist" activeStyle={{ color: '#ffff' }}>
+        <CustomNavLink
+          exact
+          to="/wishlist"
+          activeStyle={{ color: '#ffff' }}
+          title="Wishlist"
+        >
           <WishlistContainer>
             <Heart size={32} />
             {getWishlistItemCount() > 0 && (
@@ -75,7 +85,12 @@ export const NavBar: React.FC = () => {
             )}
           </WishlistContainer>
         </CustomNavLink>
-        <CustomNavLink exact to="/cart" activeStyle={{ color: '#ffff' }}>
+        <CustomNavLink
+          exact
+          to="/cart"
+          activeStyle={{ color: '#ffff' }}
+          title="Cart"
+        >
           <WishlistContainer>
             <ShoppingCart size={32} />
             {getCartItemCount() > 0 && (

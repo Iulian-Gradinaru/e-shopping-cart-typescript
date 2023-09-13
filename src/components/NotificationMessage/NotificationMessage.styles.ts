@@ -9,7 +9,7 @@ export const Container = styled('div')({
   alignItems: 'flex-end',
   height: '10vh',
   zIndex: 9999,
-  padding: 30,
+  padding: 20,
   borderRadius: 5,
   backgroundColor: '#7493d0',
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
@@ -18,12 +18,12 @@ export const Container = styled('div')({
 });
 
 export const CustomPargraph = styled('p')({
-  backgroundColor: 'rgb(243, 0, 0)',
-  padding: 10,
+  padding: 20,
+
   fontSize: 16,
   borderRadius: 5,
   color: 'white',
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+
   position: 'relative',
   top: 30,
 });

@@ -9,9 +9,7 @@ import { styled } from '@mui/system';
 export const FooterContainer = styled('footer')(({ theme }) => {
   return {
     textAlign: 'center',
-    // position: 'fixed',
-    // left: 0,
-    // bottom: 0,
+
     width: '100%',
     [theme.breakpoints.down('sm')]: {
       width: '52vh',
@@ -128,6 +126,7 @@ export const RightsWrapper = styled('div')(() => {
  */
 export const Link = styled('a')(() => {
   return {
+    marginLeft: 5,
     color: '#ffffff',
     textDecoration: 'inherit',
     '&:hover': {

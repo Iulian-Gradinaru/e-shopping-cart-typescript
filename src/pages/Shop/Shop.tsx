@@ -37,9 +37,18 @@ export const Shop = () => {
     setCurrentPage(1);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   const handleSortOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOrder(e.target.value as 'asc' | 'desc' | null);
   };
+
+  const windowHeight = window.innerHeight;
+  const halfPageY = windowHeight / 2;
 
   useEffect(() => {
     if (inputRef.current) {
@@ -83,8 +92,13 @@ export const Shop = () => {
             value={searchTerm}
             onChange={handleChange}
             ref={inputRef}
+            onKeyDown={handleKeyDown}
           />
-          <StylesButton className="btn-search" onClick={handleSearch}>
+          <StylesButton
+            className="btn-search"
+            type="button"
+            onClick={handleSearch}
+          >
             <SearchIcon />
           </StylesButton>
         </InputContainer>
@@ -115,7 +129,7 @@ export const Shop = () => {
           disabled={currentPage === 1}
           onClick={() => {
             setCurrentPage((prevstate) => prevstate - 1);
-            window.scrollTo(0, 0);
+            window.scrollTo(0, halfPageY);
           }}
         >
           Prev
@@ -125,7 +139,7 @@ export const Shop = () => {
           disabled={lastIndex >= filteredProducts.length}
           onClick={() => {
             setCurrentPage((prevstate) => prevstate + 1);
-            window.scrollTo(0, 0);
+            window.scrollTo(0, halfPageY);
           }}
         >
           Next
