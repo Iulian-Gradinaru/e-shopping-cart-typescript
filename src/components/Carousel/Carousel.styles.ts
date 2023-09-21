@@ -1,5 +1,11 @@
+/**
+ * Imports styled
+ */
 import { styled } from '@mui/system';
 
+/**
+ * Styles the Carousel Container
+ */
 export const CarouselContainer = styled('div')({
   '*': {
     padding: 0,

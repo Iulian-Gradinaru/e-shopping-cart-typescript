@@ -74,7 +74,7 @@ export const Shop = () => {
       });
       setFilteredProducts(sortedProducts);
     }
-  }, [sortOrder, filteredProducts]);
+  }, [sortOrder]);
 
   const productsPerPage = 9;
   const lastIndex = currentPage * productsPerPage;

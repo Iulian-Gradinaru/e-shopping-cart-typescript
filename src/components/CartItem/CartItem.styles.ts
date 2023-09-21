@@ -1,6 +1,16 @@
-import { Button } from '@mui/material';
+/**
+ * Imports styled
+ */
 import { styled } from '@mui/system';
 
+/**
+ * Imports Material UI components
+ */
+import { Button } from '@mui/material';
+
+/**
+ * Styles the CartItem Container
+ */
 export const CartItemContainer = styled('div')(({ theme }) => {
   return {
     width: '600px',
@@ -12,7 +22,6 @@ export const CartItemContainer = styled('div')(({ theme }) => {
     borderRadius: '25px',
     margin: '30px',
     backgroundColor: '#c1c9e980',
-    // marginBottom: 20,
     [theme.breakpoints.down('sm')]: {
       width: '85%',
       margin: 10,
@@ -26,6 +35,9 @@ export const CartItemContainer = styled('div')(({ theme }) => {
   };
 });
 
+/**
+ * Styles the Image
+ */
 export const Image = styled('img')(({ theme }) => ({
   width: '260px',
   padding: '10px',
@@ -45,6 +57,9 @@ export const Image = styled('img')(({ theme }) => ({
   },
 }));
 
+/**
+ * Styles the Product Name
+ */
 export const ProductName = styled('div')(({ theme }) => {
   return {
     display: 'flex',
@@ -60,6 +75,9 @@ export const ProductName = styled('div')(({ theme }) => {
   };
 });
 
+/**
+ * Styles the Description
+ */
 export const Description = styled('div')(({ theme }) => {
   return {
     width: '100%',
@@ -78,15 +96,25 @@ export const Description = styled('div')(({ theme }) => {
   };
 });
 
+/**
+ * Styles the Price
+ */
 export const Price = styled('p')({
   marginTop: 8,
   marginBottom: -23,
 });
+
+/**
+ * Styles the Discount
+ */
 export const Discount = styled('p')({
   marginBottom: 0,
   textDecoration: 'line-through',
 });
 
+/**
+ * Styles the Count Handler
+ */
 export const CountHandler = styled('div')(({ theme }) => {
   return {
     [theme.breakpoints.down('sm')]: {
@@ -95,6 +123,9 @@ export const CountHandler = styled('div')(({ theme }) => {
   };
 });
 
+/**
+ * Styles the Styles Button
+ */
 export const StylesButton = styled(Button)(({ theme }) => ({
   backgroundColor: '#7493d0',
   color: '#fff',
@@ -116,6 +147,9 @@ export const StylesButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+/**
+ * Styles the Styles Paragraph
+ */
 export const StylesParagraph = styled('p')(({ theme }) => {
   return {
     fontWeight: 600,
@@ -128,6 +162,9 @@ export const StylesParagraph = styled('p')(({ theme }) => {
   };
 });
 
+/**
+ * Styles the Input Handler
+ */
 export const InputHandler = styled('input')(({ theme }) => {
   return {
     width: 60,

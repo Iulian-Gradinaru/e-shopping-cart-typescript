@@ -1,26 +1,27 @@
-import lights_img from '../assets/products/wallpaperflare.com_wallpaper.jpg';
-import hangman_img from '../assets/products/wallpaperflare.com_wallpaper (1).jpg';
-import smartbrain_img from '../assets/products/wallpaperflare.com_wallpaper (2).jpg';
+import header1 from '../assets/products/header.jpg';
+import header2 from '../assets/products/header2.jpg';
+import header3 from '../assets/products/header3.jpg';
+import header4 from '../assets/products/header4.jpg';
 
 export const data = [
   {
     id: 1,
 
-    image: lights_img,
+    image: header1,
   },
   {
     id: 2,
 
-    image: smartbrain_img,
+    image: header2,
   },
   {
     id: 3,
 
-    image: hangman_img,
+    image: header3,
   },
-  // {
-  //   id: 4,
+  {
+    id: 4,
 
-  //   image: pokedex_img,
-  // },
+    image: header4,
+  },
 ];
