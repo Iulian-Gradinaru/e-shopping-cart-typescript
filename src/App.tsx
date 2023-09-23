@@ -25,12 +25,13 @@ export const App = () => {
                 <Route path="/wishlist" exact component={WishList} />
                 <Route path="/cart" exact component={Cart} />
                 <Route path="/checkout" exact component={Checkout} />
-                <Route path="*" component={Shop} />
+
                 <Route
                   path="/product/:productId"
                   component={ProductDescriptions}
                 />
                 <Route path="/message" exact component={Message} />
+                <Route path="*" component={Shop} />
               </Switch>
             </div>
           </ScrollToTop>
