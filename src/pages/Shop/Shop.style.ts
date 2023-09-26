@@ -84,12 +84,6 @@ export const SearchBarStyle = styled('input')({
   fontSize: '16px',
 });
 
-// export const SearchIconWrapper = styled('div')({
-//   marginRight: '10px',
-//   color: '#ccc',
-//   width: 40,
-// });
-
 export const StylesButton = styled('button')({
   display: 'flex',
   justifyContent: 'center',
@@ -151,5 +145,16 @@ export const CustomSpan = styled('span')(() => {
     margin: 10,
     color: 'black',
     fontWeight: 600,
+  };
+});
+
+export const SearchMessage = styled('h2')(({ theme }) => {
+  return {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 40,
+    fontSize: 25,
+    [theme.breakpoints.down('sm')]: {},
   };
 });

@@ -14,6 +14,7 @@ import {
   Select,
   CustomButton,
   CustomSpan,
+  SearchMessage,
 } from './Shop.style';
 import { useEffect, useState, useRef } from 'react';
 import { PRODUCTS, ProductData } from '../../utils/products';
@@ -118,11 +119,15 @@ export const Shop = () => {
         </Sort>
       </SearchContainer>
 
-      <ProductsGrid className="products">
-        {currentProducts.map((product) => (
-          <Item key={product.id} product={product} />
-        ))}
-      </ProductsGrid>
+      {filteredProducts.length === 0 ? (
+        <SearchMessage className="no-products">No products found</SearchMessage>
+      ) : (
+        <ProductsGrid className="products">
+          {currentProducts.map((product) => (
+            <Item key={product.id} product={product} />
+          ))}
+        </ProductsGrid>
+      )}
 
       <div className="pagination">
         <CustomButton

@@ -109,7 +109,12 @@ export const WishList: React.FC = () => {
   return (
     <WishListContainer>
       <WishListTitle>Wishlist</WishListTitle>
-      {wishlistItems}
+      {/* {wishlistItems} */}
+      {Object.keys(wishlist).length === 0 ? (
+        <h2>No products in Wishlist</h2>
+      ) : (
+        wishlistItems
+      )}
       <ContainerButtons className="container-buttons">
         <Link to={'/'}>
           <CustomButton>Go to Shop</CustomButton>
